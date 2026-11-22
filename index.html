@@ -11,14 +11,15 @@
     :root {
       --bg-burgundy: #3B0D17;
       --bg-burgundy-deep: #24060D;
-      --card-burgundy: rgba(46, 10, 18, 0.78);
+      --card-burgundy: rgba(46, 10, 18, 0.8);
       --milk: #FBF6F0;
       --milk-cream: #F4ECE1;
-      --milk-soft: rgba(251, 246, 240, 0.86);
-      --milk-muted: rgba(251, 246, 240, 0.65);
+      --milk-soft: rgba(251, 246, 240, 0.88);
+      --milk-muted: rgba(251, 246, 240, 0.66);
       --ink-dark: #2B0911;
       --ink-muted: #5E3B42;
       --champagne: #DFC39D;
+      --gold-seal: #D8B46C;
       --champagne-soft: rgba(223, 195, 157, 0.38);
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,9 +38,9 @@
     body {
       background-color: var(--bg-burgundy);
       background-image:
-        radial-gradient(circle at 18% 12%, rgba(251, 246, 240, 0.08) 0%, transparent 42%),
+        radial-gradient(circle at 18% 12%, rgba(251, 246, 240, 0.09) 0%, transparent 42%),
         radial-gradient(circle at 82% 28%, rgba(122, 28, 49, 0.45) 0%, transparent 52%),
-        radial-gradient(circle at 25% 78%, rgba(223, 195, 157, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 25% 78%, rgba(223, 195, 157, 0.08) 0%, transparent 45%),
         linear-gradient(180deg, #3B0D17 0%, #2C0810 55%, #21050B 100%);
       color: var(--milk);
       font-family: var(--sans);
@@ -69,173 +70,131 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 20;
+      z-index: 25;
     }
 
-    /* ЭКРАН-КОНВЕРТ ДЛЯ ОТКРЫТИЯ ПРИГЛАШЕНИЯ */
-    .envelope-overlay {
+    /* ПОЛНОЭКРАННЫЙ КОНВЕРТ В СТИЛЕ ПРИМЕРА */
+    .full-envelope {
       position: fixed;
       inset: 0;
       z-index: 50;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(251, 246, 240, 0.14), transparent 60%),
-        linear-gradient(160deg, #3A0C16 0%, #23060C 100%);
-      transition: opacity 0.85s ease, visibility 0.85s ease;
+      overflow: hidden;
+      background: #2A0710;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
     }
 
-    .envelope-overlay.is-hidden {
+    .full-envelope.is-done {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
 
-    .envelope-caption {
-      font-size: 11px;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--champagne);
-      margin-bottom: 24px;
-      text-align: center;
+    .envelope-wing {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 56vw;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(126, 33, 52, 0.45), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(24, 4, 9, 0.65), transparent 60%),
+        linear-gradient(165deg, #4E1321 0%, #370B16 55%, #27060E 100%);
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.7), inset 0 0 45px rgba(0, 0, 0, 0.45);
+      transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+      z-index: 2;
+      display: flex;
+      align-items: center;
     }
 
-    .envelope-btn {
+    .envelope-wing-left {
+      left: 0;
+      border-right: 1px solid rgba(223, 195, 157, 0.25);
+      justify-content: flex-end;
+    }
+
+    .envelope-wing-right {
+      right: 0;
+      border-left: 1px solid rgba(223, 195, 157, 0.25);
+      justify-content: flex-start;
+      transform: scaleX(-1);
+    }
+
+    .envelope-emboss-svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.34;
+      pointer-events: none;
+    }
+
+    .full-envelope.is-opening .envelope-wing-left {
+      transform: translateX(-104%);
+    }
+
+    .full-envelope.is-opening .envelope-wing-right {
+      transform: scaleX(-1) translateX(-104%);
+    }
+
+    .envelope-center-trigger {
       position: relative;
-      width: min(380px, 90vw);
-      height: 245px;
-      background: var(--milk);
-      border-radius: 10px;
-      border: 1px solid rgba(223, 195, 157, 0.65);
-      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(251, 246, 240, 0.08);
+      z-index: 4;
+      background: transparent;
+      border: none;
       cursor: pointer;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 22px;
-      overflow: hidden;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 12px;
+      transition: transform 0.35s ease, opacity 0.35s ease;
     }
 
-    .envelope-btn:hover {
-      transform: translateY(-5px) scale(1.015);
-      box-shadow: 0 34px 75px rgba(0, 0, 0, 0.62), 0 0 0 8px rgba(223, 195, 157, 0.16);
+    .envelope-center-trigger:hover {
+      transform: scale(1.04);
     }
 
-    .envelope-flap {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 132px;
-      background: var(--milk-cream);
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      border-bottom: 1px solid rgba(59, 13, 23, 0.12);
-      transform-origin: top center;
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 2;
+    .full-envelope.is-opening .envelope-center-trigger {
+      opacity: 0;
+      transform: scale(0.82);
+      pointer-events: none;
     }
 
-    .envelope-flap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(59, 13, 23, 0.05), transparent);
-    }
-
-    .envelope-pocket {
-      position: absolute;
-      inset: 0;
+    .gold-wax-seal {
+      width: 106px;
+      height: 106px;
+      border-radius: 44% 56% 48% 52% / 52% 45% 55% 48%;
       background:
-        linear-gradient(135deg, rgba(59, 13, 23, 0.06) 0%, transparent 52%),
-        linear-gradient(225deg, rgba(59, 13, 23, 0.06) 0%, transparent 52%),
-        linear-gradient(0deg, rgba(59, 13, 23, 0.05) 0%, transparent 45%);
-      z-index: 1;
-    }
-
-    .envelope-inner-info {
-      position: relative;
-      z-index: 3;
-      text-align: center;
-      color: var(--ink-dark);
-    }
-
-    .envelope-names {
-      font-family: var(--serif);
-      font-size: 26px;
-      line-height: 1.15;
-      color: var(--bg-burgundy);
-      margin-bottom: 4px;
-    }
-
-    .envelope-hint {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-muted);
-    }
-
-    .wax-seal {
-      position: absolute;
-      top: 86px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #7B1A2F, #430A16 75%);
-      border: 2px solid var(--champagne);
-      color: var(--milk);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 20px;
+        radial-gradient(circle at 32% 28%, #F3D99B 0%, #D4AE62 48%, #9C7632 100%);
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.6),
+        inset 0 2px 6px rgba(255, 248, 224, 0.75),
+        inset 0 -4px 10px rgba(76, 50, 12, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 20px rgba(36, 6, 13, 0.45);
-      z-index: 4;
-      transition: transform 0.5s ease, opacity 0.4s ease;
+      position: relative;
     }
 
-    .envelope-overlay.is-opening .envelope-flap {
-      transform: rotateX(180deg);
+    .gold-wax-seal::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 46% 54% 50% 50% / 50% 48% 52% 50%;
+      border: 1px solid rgba(104, 72, 22, 0.42);
     }
 
-    .envelope-overlay.is-opening .wax-seal {
-      transform: translateX(-50%) scale(0.5);
-      opacity: 0;
-    }
-
-    /* Кнопка управления музыкой */
-    .music-toggle {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 30;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: var(--milk);
+    .envelope-open-label {
+      background: rgba(251, 246, 240, 0.94);
       color: var(--ink-dark);
-      border: 1px solid var(--champagne);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      padding: 8px 18px;
+      border-radius: 999px;
       font-family: var(--sans);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .music-toggle:hover {
-      transform: translateY(-2px);
-      background: var(--champagne);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
 
     /* Ботанические зарисовки по углам */
@@ -325,7 +284,14 @@
       color: var(--milk);
     }
 
-    /* ПЕРВЫЙ ЭКРАН — МОЛОЧНОЕ ПИСЬМО-ОТКРЫТКА ВМЕСТО АРКИ */
+    .section-icon {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 10px;
+      display: block;
+    }
+
+    /* ПЕРВЫЙ ЭКРАН — МОЛОЧНОЕ ПИСЬМО-ОТКРЫТКА */
     .hero {
       min-height: 92vh;
       display: flex;
@@ -425,7 +391,7 @@
       transform: translateY(3px);
     }
 
-    /* КАРТОЧКИ: ЧЕРЕДОВАНИЕ БАРХАТНОГО БУРГУНДИ И СВЕТЛОГО МОЛОЧНОГО */
+    /* КАРТОЧКИ: ЧЕРЕДОВАНИЕ БАРХАТНОГО БУРГУНДИ И МОЛОЧНОГО */
     .card {
       background: var(--card-burgundy);
       border: 1px solid var(--champagne-soft);
@@ -456,7 +422,8 @@
     .card-milk .invite-text,
     .card-milk .venue-desc,
     .card-milk .timeline-note,
-    .card-milk .swatch-name {
+    .card-milk .swatch-name,
+    .card-milk .photo-caption {
       color: var(--ink-muted);
     }
 
@@ -468,13 +435,6 @@
     .card-milk .divider span,
     .card-milk .timeline-time {
       color: var(--bg-burgundy);
-    }
-
-    .sketch-badge {
-      display: block;
-      margin: 0 auto 12px;
-      width: 68px;
-      height: 36px;
     }
 
     .watermark {
@@ -505,6 +465,47 @@
       margin-top: 16px;
     }
 
+    /* ГАЛЕРЕЯ НАШИХ ФОТОГРАФИЙ */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .photo-frame {
+      background: #FFFFFF;
+      padding: 10px 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(59, 13, 23, 0.16);
+      box-shadow: 0 14px 30px rgba(43, 9, 17, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 38px rgba(43, 9, 17, 0.18);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center 22%;
+      border-radius: 9px;
+      display: block;
+      background: var(--milk-cream);
+    }
+
+    .photo-caption {
+      margin-top: 9px;
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+    }
+
+    /* Таймер */
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -539,6 +540,7 @@
       display: block;
     }
 
+    /* Локация */
     .location-box {
       text-align: center;
     }
@@ -558,7 +560,9 @@
     }
 
     .btn-outline {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 13px 28px;
       border: 1px solid var(--champagne);
       color: var(--milk);
@@ -577,6 +581,7 @@
       color: var(--bg-burgundy-deep);
     }
 
+    /* Тайминг */
     .timeline {
       max-width: 560px;
       margin: 0 auto;
@@ -632,6 +637,7 @@
       margin-top: 4px;
     }
 
+    /* Палитра и пожелания */
     .palette-grid {
       display: flex;
       justify-content: center;
@@ -674,6 +680,7 @@
       display: block;
     }
 
+    /* Анкета RSVP */
     .rsvp-form {
       max-width: 540px;
       margin: 0 auto;
@@ -783,6 +790,7 @@
       min-height: 20px;
     }
 
+    /* Контакты */
     .contacts-card {
       text-align: center;
     }
@@ -810,6 +818,9 @@
     }
 
     .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       padding: 10px 20px;
       border-radius: 50px;
       border: 1px solid var(--champagne-soft);
@@ -830,7 +841,7 @@
 
     footer {
       text-align: center;
-      padding: 40px 20px 76px;
+      padding: 40px 20px 64px;
       color: var(--milk-muted);
       font-size: 13px;
       position: relative;
@@ -843,6 +854,15 @@
       font-style: italic;
       color: var(--champagne);
       margin-bottom: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .photo-grid {
+        grid-template-columns: 1fr;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     @media (max-width: 600px) {
@@ -862,37 +882,62 @@
         width: 145px;
         opacity: 0.2;
       }
-      .music-toggle {
-        right: 12px;
-        bottom: 12px;
-        padding: 9px 13px;
+      .gold-wax-seal {
+        width: 92px;
+        height: 92px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- КОНВЕРТ ДЛЯ ОТКРЫТИЯ ПРИГЛАШЕНИЯ -->
-  <div class="envelope-overlay" id="envelopeOverlay">
-    <div class="envelope-caption">Вам пришло приглашение на свадьбу</div>
-    <button type="button" class="envelope-btn" id="openEnvelopeBtn" aria-label="Открыть приглашение">
-      <div class="envelope-flap"></div>
-      <div class="wax-seal">С &amp; Е</div>
-      <div class="envelope-pocket"></div>
-      <div class="envelope-inner-info">
-        <div class="envelope-names">Сергей &amp; Елизавета</div>
-        <div class="envelope-hint">Нажмите, чтобы открыть письмо</div>
+  <!-- ПОЛНОЭКРАННЫЙ КОНВЕРТ С ЦВЕТОЧНЫМ УЗОРОМ И ЗОЛОТОЙ ПЕЧАТЬЮ -->
+  <div class="full-envelope" id="fullEnvelope">
+    <div class="envelope-wing envelope-wing-left">
+      <svg class="envelope-emboss-svg" viewBox="0 0 420 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 0 H290 C320 45, 295 95, 325 140 C355 185, 315 240, 345 290 C375 340, 330 400, 360 450 C330 500, 375 560, 345 610 C315 660, 355 715, 325 760 C295 805, 320 855, 290 900 H-20 Z" stroke="#1E040A" stroke-width="2" fill="rgba(26, 4, 9, 0.25)"/>
+        <circle cx="170" cy="180" r="46" stroke="#8C3346" stroke-width="1.4"/>
+        <circle cx="170" cy="180" r="14" stroke="#8C3346" stroke-width="1.2"/>
+        <path d="M170 134 V226 M124 180 H216 M138 148 L202 212 M202 148 L138 212" stroke="#8C3346" stroke-width="1"/>
+        <circle cx="120" cy="450" r="54" stroke="#8C3346" stroke-width="1.5"/>
+        <circle cx="120" cy="450" r="18" stroke="#8C3346" stroke-width="1.2"/>
+        <path d="M120 396 V504 M66 450 H174 M82 412 L158 488 M158 412 L82 488" stroke="#8C3346" stroke-width="1.1"/>
+        <path d="M190 250 C240 310, 240 590, 190 650" stroke="#8C3346" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="185" cy="720" r="42" stroke="#8C3346" stroke-width="1.3"/>
+      </svg>
+    </div>
+
+    <div class="envelope-wing envelope-wing-right">
+      <svg class="envelope-emboss-svg" viewBox="0 0 420 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-20 0 H290 C320 45, 295 95, 325 140 C355 185, 315 240, 345 290 C375 340, 330 400, 360 450 C330 500, 375 560, 345 610 C315 660, 355 715, 325 760 C295 805, 320 855, 290 900 H-20 Z" stroke="#1E040A" stroke-width="2" fill="rgba(26, 4, 9, 0.25)"/>
+        <circle cx="170" cy="180" r="46" stroke="#8C3346" stroke-width="1.4"/>
+        <circle cx="170" cy="180" r="14" stroke="#8C3346" stroke-width="1.2"/>
+        <path d="M170 134 V226 M124 180 H216 M138 148 L202 212 M202 148 L138 212" stroke="#8C3346" stroke-width="1"/>
+        <circle cx="120" cy="450" r="54" stroke="#8C3346" stroke-width="1.5"/>
+        <circle cx="120" cy="450" r="18" stroke="#8C3346" stroke-width="1.2"/>
+        <path d="M120 396 V504 M66 450 H174 M82 412 L158 488 M158 412 L82 488" stroke="#8C3346" stroke-width="1.1"/>
+        <path d="M190 250 C240 310, 240 590, 190 650" stroke="#8C3346" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="185" cy="720" r="42" stroke="#8C3346" stroke-width="1.3"/>
+      </svg>
+    </div>
+
+    <button type="button" class="envelope-center-trigger" id="openEnvelopeBtn" aria-label="Открыть приглашение">
+      <div class="gold-wax-seal">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 42 C28 31, 28 22, 28 14" stroke="#5E3E0D" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M28 21 C22 16, 17 18, 18 24 C22 25, 26 23, 28 21 Z" stroke="#5E3E0D" stroke-width="1.4" fill="rgba(255, 246, 214, 0.35)"/>
+          <path d="M28 21 C34 16, 39 18, 38 24 C34 25, 30 23, 28 21 Z" stroke="#5E3E0D" stroke-width="1.4" fill="rgba(255, 246, 214, 0.35)"/>
+          <path d="M28 14 C23 9, 18 11, 20 17 C24 18, 27 16, 28 14 Z" stroke="#5E3E0D" stroke-width="1.4" fill="rgba(255, 246, 214, 0.35)"/>
+          <path d="M28 14 C33 9, 38 11, 36 17 C32 18, 29 16, 28 14 Z" stroke="#5E3E0D" stroke-width="1.4" fill="rgba(255, 246, 214, 0.35)"/>
+          <path d="M28 31 C22 28, 17 31, 20 35 C24 36, 27 33, 28 31 Z" stroke="#5E3E0D" stroke-width="1.3"/>
+          <path d="M28 31 C34 28, 39 31, 36 35 C32 36, 29 33, 28 31 Z" stroke="#5E3E0D" stroke-width="1.3"/>
+        </svg>
       </div>
+      <span class="envelope-open-label">Открыть приглашение</span>
     </button>
   </div>
 
-  <!-- Кнопка управления мелодией -->
-  <button type="button" class="music-toggle" id="musicToggle" aria-label="Включить или выключить музыку">
-    <span id="musicIcon">♪</span>
-    <span id="musicLabel">Скрипка: вкл</span>
-  </button>
-
-  <!-- Снег на фоне -->
+  <!-- Небольшие падающие снежинки -->
   <canvas id="snow-canvas"></canvas>
 
   <!-- Зимний ботанический декор по углам -->
@@ -920,7 +965,7 @@
     <circle cx="212" cy="193" r="5" fill="#DFC39D"/>
   </svg>
 
-  <!-- 1. ГЛАВНЫЙ ЭКРАН (МОЛОЧНОЕ ПИСЬМО ВМЕСТО АРКИ) -->
+  <!-- 1. ГЛАВНЫЙ ЭКРАН -->
   <header class="hero">
     <div class="hero-letter">
       <svg class="hero-sketch" viewBox="0 0 140 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -950,10 +995,9 @@
     <!-- 2. ТЕКСТ ПРИГЛАШЕНИЯ И ТАЙМЕР -->
     <section id="invitation">
       <div class="card card-milk">
-        <svg class="sketch-badge" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="28" cy="19" r="9" stroke="#3B0D17" stroke-width="1.2"/>
-          <circle cx="44" cy="19" r="9" stroke="#8A3B4C" stroke-width="1.2"/>
-          <path d="M36 6 L37.5 9.5 L41 11 L37.5 12.5 L36 16 L34.5 12.5 L31 11 L34.5 9.5 Z" fill="#3B0D17"/>
+        <!-- Иконка сердечка с веточкой -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 29 C18 29, 7 21.5, 7 14 C7 10.5, 9.8 8, 13 8 C15.2 8, 17 9.2, 18 11 C19 9.2, 20.8 8, 23 8 C26.2 8, 29 10.5, 29 14 C29 21.5, 18 29, 18 29 Z" stroke="#3B0D17" stroke-width="1.3" stroke-linejoin="round"/>
         </svg>
         <div class="section-subtitle">Дорогие родные и друзья</div>
         <h2 class="section-title">Мы ждём вас!</h2>
@@ -988,13 +1032,43 @@
       </div>
     </section>
 
-    <!-- 3. МЕСТО ПРОВЕДЕНИЯ -->
+    <!-- 3. НАШИ ФОТОГРАФИИ -->
+    <section id="gallery">
+      <div class="card card-milk">
+        <!-- Иконка фотоаппарата -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="12" width="24" height="16" rx="3" stroke="#3B0D17" stroke-width="1.3"/>
+          <path d="M13 12 L15 9 H21 L23 12" stroke="#3B0D17" stroke-width="1.3" stroke-linejoin="round"/>
+          <circle cx="18" cy="20" r="4.5" stroke="#8A3B4C" stroke-width="1.3"/>
+        </svg>
+        <div class="section-subtitle">Наша история</div>
+        <h2 class="section-title">Вместе к главному дню</h2>
+        <div class="divider"><span>✦</span></div>
+
+        <div class="photo-grid">
+          <div class="photo-frame">
+            <img src="photo-1.jpg" alt="Сергей и Елизавета" />
+            <div class="photo-caption">Наше тепло</div>
+          </div>
+          <div class="photo-frame">
+            <img src="photo-2.jpg" alt="Сергей и Елизавета вместе" />
+            <div class="photo-caption">Рядом навсегда</div>
+          </div>
+          <div class="photo-frame">
+            <img src="photo-3.jpg" alt="Счастливые моменты Сергея и Елизаветы" />
+            <div class="photo-caption">В ожидании 26.02.2027</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. МЕСТО ПРОВЕДЕНИЯ -->
     <section id="location">
       <div class="card location-box">
-        <svg class="sketch-badge" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="33" y="15" width="6" height="16" rx="2" stroke="#DFC39D" stroke-width="1.2"/>
-          <path d="M36 6 C33 9.5, 33 12, 36 13.5 C39 12, 39 9.5, 36 6 Z" fill="#DFC39D"/>
-          <path d="M16 31 H56" stroke="#DFC39D" stroke-width="1" stroke-linecap="round"/>
+        <!-- Иконка локации -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 30 C18 30, 10 21.5, 10 15 C10 10.6, 13.6 7, 18 7 C22.4 7, 26 10.6, 26 15 C26 21.5, 18 30, 18 30 Z" stroke="#DFC39D" stroke-width="1.3"/>
+          <circle cx="18" cy="15" r="3" stroke="#DFC39D" stroke-width="1.2"/>
         </svg>
         <div class="section-subtitle">Место встречи</div>
         <h2 class="section-title">Локация торжества</h2>
@@ -1005,17 +1079,19 @@
           И трогательная церемония регистрации, и праздничный ужин пройдут в одном уютном месте — вам не придётся никуда переезжать.
         </p>
         <a href="https://yandex.by/maps/?text=Бобруйск%20кафе%20Тимьян" target="_blank" rel="noopener" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6-5.3-6-10a6 6 0 0 1 12 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>
           Открыть на карте
         </a>
       </div>
     </section>
 
-    <!-- 4. ПРОГРАММА ДНЯ -->
+    <!-- 5. ПРОГРАММА ДНЯ -->
     <section id="timing">
       <div class="card card-milk">
-        <svg class="sketch-badge" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="36" cy="18" r="11" stroke="#3B0D17" stroke-width="1.2"/>
-          <path d="M36 12 V18 L40.5 21" stroke="#8A3B4C" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- Иконка часов -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="10" stroke="#3B0D17" stroke-width="1.3"/>
+          <path d="M18 12.5 V18 L22 20.5" stroke="#8A3B4C" stroke-width="1.3" stroke-linecap="round"/>
         </svg>
         <div class="section-subtitle">26 февраля 2027</div>
         <h2 class="section-title">Программа дня</h2>
@@ -1053,10 +1129,14 @@
       </div>
     </section>
 
-    <!-- 5. ДРЕСС-КОД И ПОЖЕЛАНИЯ -->
+    <!-- 6. ДРЕСС-КОД И ПОЖЕЛАНИЯ -->
     <section id="details">
       <div class="card">
         <div class="watermark">С &amp; Е</div>
+        <!-- Иконка палитры/звёздочки -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 7 L20.2 14.8 L28 17 L20.2 19.2 L18 27 L15.8 19.2 L8 17 L15.8 14.8 Z" stroke="#DFC39D" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
         <div class="section-subtitle">Детали вечера</div>
         <h2 class="section-title">Атмосфера и пожелания</h2>
         <div class="divider"><span>❄</span></div>
@@ -1081,6 +1161,7 @@
         </div>
 
         <div class="wish-box">
+          <!-- Иконка бокала вина -->
           <svg class="wish-sketch" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17 10 H35 L33 23 C32 28.5, 29 31, 26 31 C23 31, 20 28.5, 19 23 L17 10 Z" stroke="#DFC39D" stroke-width="1.3" stroke-linejoin="round"/>
             <path d="M18.5 19.5 C23 18, 29 21, 33.5 19.5" stroke="#DFC39D" stroke-width="1.1"/>
@@ -1093,12 +1174,13 @@
       </div>
     </section>
 
-    <!-- 6. АНКЕТА ГОСТЯ -->
+    <!-- 7. АНКЕТА ГОСТЯ -->
     <section id="rsvp">
       <div class="card card-milk">
-        <svg class="sketch-badge" viewBox="0 0 72 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 26 L44 10 L48 14 L28 30 L22 31 Z" stroke="#3B0D17" stroke-width="1.2" stroke-linejoin="round"/>
-          <path d="M22 31 H50" stroke="#8A3B4C" stroke-width="1" stroke-linecap="round"/>
+        <!-- Иконка письма -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="7" y="10" width="22" height="16" rx="2.5" stroke="#3B0D17" stroke-width="1.3"/>
+          <path d="M8 11.5 L18 19 L28 11.5" stroke="#8A3B4C" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div class="section-subtitle">Подтверждение присутствия</div>
         <h2 class="section-title">Анкета гостя</h2>
@@ -1166,9 +1248,13 @@
       </div>
     </section>
 
-    <!-- 7. КОНТАКТЫ -->
+    <!-- 8. КОНТАКТЫ -->
     <section id="contacts">
       <div class="card contacts-card">
+        <!-- Иконка телефона/сообщения -->
+        <svg class="section-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 10 L15.5 10 L17 14.5 L14.5 16.5 C15.8 19.2, 17.8 21.2, 20.5 22.5 L22.5 20 L27 21.5 L27 25 C27 26.4, 25.8 27.5, 24.4 27.4 C16.2 26.8, 9.7 20.3, 9.1 12.1 C9 10.7, 10.6 10, 12 10 Z" stroke="#DFC39D" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
         <div class="section-subtitle">Связь с нами</div>
         <h2 class="section-title">Остались вопросы?</h2>
         <div class="divider"><span>❄</span></div>
@@ -1179,10 +1265,22 @@
         <a href="tel:+375447377686" class="phone-link">+375 (44) 737-76-86</a>
 
         <div class="contact-actions">
-          <a href="tel:+375447377686" class="contact-pill">Позвонить</a>
-          <a href="https://t.me/+375447377686" target="_blank" rel="noopener" class="contact-pill">Telegram</a>
-          <a href="viber://chat?number=%2B375447377686" class="contact-pill">Viber</a>
-          <a href="mailto:fisyuk.liza@gmail.com" class="contact-pill">Написать на почту</a>
+          <a href="tel:+375447377686" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.37 1.6.73 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.36 1.54.61 2.35.73A2 2 0 0 1 22 16.92z"/></svg>
+            Позвонить
+          </a>
+          <a href="https://t.me/+375447377686" target="_blank" rel="noopener" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Telegram
+          </a>
+          <a href="viber://chat?number=%2B375447377686" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Viber
+          </a>
+          <a href="mailto:fisyuk.liza@gmail.com" class="contact-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Написать на почту
+          </a>
         </div>
       </div>
     </section>
@@ -1195,9 +1293,20 @@
   </footer>
 
   <script>
-    const CUSTOM_VIOLIN_MP3 = 'violin.mp3';
+    // 1. Полноэкранный конверт
+    (function () {
+      const overlay = document.getElementById('fullEnvelope');
+      const btn = document.getElementById('openEnvelopeBtn');
 
-    // 1. Небольшие падающие снежинки
+      btn.addEventListener('click', () => {
+        overlay.classList.add('is-opening');
+        setTimeout(() => {
+          overlay.classList.add('is-done');
+        }, 880);
+      });
+    })();
+
+    // 2. Небольшие падающие снежинки
     (function () {
       const canvas = document.getElementById('snow-canvas');
       const ctx = canvas.getContext('2d');
@@ -1241,153 +1350,6 @@
       drawSnow();
     })();
 
-    // 2. Нежная скрипка при открытии письма
-    const ViolinPlayer = (function () {
-      let isPlaying = false;
-      let audioEl = null;
-      let ctx = null;
-      let timerId = null;
-      let step = 0;
-
-      const melody = [
-        { f: 587.33, d: 0.9 },
-        { f: 739.99, d: 0.7 },
-        { f: 880.00, d: 1.1 },
-        { f: 783.99, d: 0.9 },
-        { f: 739.99, d: 0.8 },
-        { f: 659.25, d: 1.0 },
-        { f: 587.33, d: 1.1 },
-        { f: 554.37, d: 0.9 },
-        { f: 587.33, d: 0.8 },
-        { f: 659.25, d: 0.8 },
-        { f: 739.99, d: 1.2 },
-        { f: 659.25, d: 1.0 }
-      ];
-
-      function playSynthNote(freq, durationSec) {
-        if (!ctx) {
-          const AudioCtx = window.AudioContext || window.webkitAudioContext;
-          ctx = new AudioCtx();
-        }
-        if (ctx.state === 'suspended') {
-          ctx.resume();
-        }
-
-        const now = ctx.currentTime;
-        const osc1 = ctx.createOscillator();
-        const osc2 = ctx.createOscillator();
-        const vibrato = ctx.createOscillator();
-        const vibratoGain = ctx.createGain();
-        const filter = ctx.createBiquadFilter();
-        const gain = ctx.createGain();
-
-        osc1.type = 'sawtooth';
-        osc2.type = 'triangle';
-        osc1.frequency.setValueAtTime(freq, now);
-        osc2.frequency.setValueAtTime(freq * 2, now);
-
-        vibrato.frequency.setValueAtTime(5.2, now);
-        vibratoGain.gain.setValueAtTime(4.5, now);
-        vibrato.connect(vibratoGain);
-        vibratoGain.connect(osc1.frequency);
-
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(1450, now);
-        filter.Q.setValueAtTime(1.4, now);
-
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(0.045, now + Math.min(0.28, durationSec * 0.35));
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + durationSec * 0.96);
-
-        const subGain = ctx.createGain();
-        subGain.gain.setValueAtTime(0.25, now);
-
-        osc1.connect(filter);
-        osc2.connect(subGain);
-        subGain.connect(filter);
-        filter.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc1.start(now);
-        osc2.start(now);
-        vibrato.start(now);
-
-        osc1.stop(now + durationSec);
-        osc2.stop(now + durationSec);
-        vibrato.stop(now + durationSec);
-      }
-
-      function scheduleNext() {
-        if (!isPlaying) return;
-        const note = melody[step % melody.length];
-        playSynthNote(note.f, note.d);
-        step++;
-        timerId = setTimeout(scheduleNext, note.d * 920);
-      }
-
-      function start() {
-        if (isPlaying) return;
-        isPlaying = true;
-        updateBtn();
-
-        if (!audioEl) {
-          audioEl = new Audio(CUSTOM_VIOLIN_MP3);
-          audioEl.loop = true;
-          audioEl.volume = 0.45;
-        }
-
-        audioEl.play().catch(() => {
-          if (audioEl) audioEl.pause();
-          scheduleNext();
-        });
-      }
-
-      function stop() {
-        isPlaying = false;
-        clearTimeout(timerId);
-        if (audioEl) audioEl.pause();
-        updateBtn();
-      }
-
-      function toggle() {
-        if (isPlaying) stop();
-        else start();
-      }
-
-      function updateBtn() {
-        const label = document.getElementById('musicLabel');
-        const icon = document.getElementById('musicIcon');
-        if (isPlaying) {
-          label.textContent = 'Скрипка: вкл';
-          icon.textContent = '♪';
-        } else {
-          label.textContent = 'Скрипка: выкл';
-          icon.textContent = '♬';
-        }
-      }
-
-      return { start, stop, toggle };
-    })();
-
-    // Открытие конверта
-    (function () {
-      const overlay = document.getElementById('envelopeOverlay');
-      const btn = document.getElementById('openEnvelopeBtn');
-      const toggleBtn = document.getElementById('musicToggle');
-
-      btn.addEventListener('click', () => {
-        overlay.classList.add('is-opening');
-        ViolinPlayer.start();
-        setTimeout(() => {
-          overlay.classList.add('is-hidden');
-        }, 420);
-      });
-
-      toggleBtn.addEventListener('click', () => {
-        ViolinPlayer.toggle();
-      });
-    })();
-
     // 3. Таймер обратного отсчёта до 26.02.2027 16:00
     (function () {
       const targetDate = new Date('2027-02-26T16:00:00').getTime();
@@ -1406,7 +1368,7 @@
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 / 60)) % 60);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
         const seconds = Math.floor((diff / 1000) % 60);
 
         document.getElementById('days').textContent = String(days).padStart(2, '0');
@@ -1446,3 +1408,4 @@
   </script>
 </body>
 </html>
+
