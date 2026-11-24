@@ -18,17 +18,18 @@
             theme: {
                 extend: {
                     colors: {
-                        milky: '#FAF6F0',
-                        milkySoft: '#F3ECE2',
+                        taupeLight: '#DFD2C3',
+                        taupeDeep: '#D4C3B0',
+                        creamSoft: '#EFE7DC',
                         burgundy: '#6E1423',
                         burgundyDeep: '#2B090E',
                         burgundyRich: '#3B0D14',
-                        chocolate: '#2C1B18',
+                        chocolate: '#241411',
                         chocolateMid: '#3B2018',
                         gold: '#C5A059',
                         goldLight: '#F3DFAA',
-                        goldAntique: '#B58D44',
-                        goldDark: '#7D5C21'
+                        goldAntique: '#9E7831',
+                        goldDark: '#6E501B'
                     },
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
@@ -45,8 +46,8 @@
         }
 
         body {
-            background-color: #FAF6F0;
-            color: #2C1B18;
+            background-color: #DFD2C3;
+            color: #241411;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
@@ -87,7 +88,7 @@
             justify-content: center;
         }
 
-        /* Задняя стенка конверта */
+        /* Задняя основа конверта */
         .envelope-back {
             position: absolute;
             inset: 0;
@@ -95,17 +96,17 @@
             background: linear-gradient(145deg, #4A0D17 0%, #2E070D 100%);
             border: 1px solid rgba(197, 160, 89, 0.55);
             box-shadow:
-                0 28px 65px rgba(0, 0, 0, 0.75),
+                0 28px 65px rgba(0, 0, 0, 0.78),
                 inset 0 0 40px rgba(0, 0, 0, 0.55);
             z-index: 1;
         }
 
-        /* Карточка приглашения внутри конверта */
+        /* Внутренняя карточка приглашения */
         .envelope-letter {
             position: absolute;
             width: 88%;
             height: 82%;
-            background: radial-gradient(circle at 50% 35%, #FCF9F4 0%, #F5EFE6 100%);
+            background: radial-gradient(circle at 50% 35%, #E7DDD0 0%, #D9C9B6 100%);
             border: 1px solid #C5A059;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
@@ -125,7 +126,7 @@
             box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65);
         }
 
-        /* Боковые и нижний клапаны конверта (передний карман) */
+        /* Передний карман конверта */
         .envelope-pocket {
             position: absolute;
             inset: 0;
@@ -135,7 +136,7 @@
             pointer-events: none;
         }
 
-        /* Верхний треугольный клапан, который открывается вверх */
+        /* Верхний треугольный клапан, открывающийся вверх */
         .envelope-flap {
             position: absolute;
             top: 0;
@@ -154,7 +155,7 @@
             z-index: 1;
         }
 
-        /* Сургучная печать с вензелем Е & С и датой 26.02.2027 */
+        /* Сургучная печать с монограммой Е & С */
         .wax-seal-wrapper {
             position: absolute;
             top: 52%;
@@ -233,8 +234,8 @@
             overflow: hidden;
         }
 
-        .slide-milky-roses {
-            background: radial-gradient(circle at 50% 35%, #FCF9F4 0%, #FAF6F0 65%, #F4EDE2 100%);
+        .slide-taupe-roses {
+            background: radial-gradient(circle at 50% 35%, #E7DDD0 0%, #DFD2C3 58%, #D4C3B0 100%);
             position: relative;
             overflow: hidden;
         }
@@ -258,34 +259,34 @@
         /* Стили ответов в анкете */
         .custom-option:checked + label {
             background-color: #6E1423;
-            color: #FAF6F0;
+            color: #F5EFE6;
             border-color: #6E1423;
-            box-shadow: 0 8px 20px rgba(110, 20, 35, 0.28);
+            box-shadow: 0 8px 20px rgba(110, 20, 35, 0.3);
         }
 
         /* Выделение положительных ответов в анкете */
         .positive-option-label {
-            background: linear-gradient(135deg, rgba(110, 20, 35, 0.11) 0%, rgba(197, 160, 89, 0.2) 100%);
-            border: 1.5px solid #C5A059;
-            color: #6E1423;
+            background: linear-gradient(135deg, rgba(110, 20, 35, 0.14) 0%, rgba(197, 160, 89, 0.28) 100%);
+            border: 1.5px solid #9E7831;
+            color: #5C0F1C;
             font-weight: 500;
-            box-shadow: 0 4px 12px rgba(197, 160, 89, 0.18);
+            box-shadow: 0 4px 12px rgba(110, 20, 35, 0.14);
         }
 
         .positive-option-label:hover {
-            background: linear-gradient(135deg, rgba(110, 20, 35, 0.18) 0%, rgba(197, 160, 89, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(110, 20, 35, 0.22) 0%, rgba(197, 160, 89, 0.38) 100%);
             border-color: #6E1423;
         }
 
         .custom-option:checked + label.positive-option-label {
             background: linear-gradient(135deg, #6E1423 0%, #4A0D17 100%);
-            color: #FAF6F0;
+            color: #F5EFE6;
             border-color: #F3DFAA;
-            box-shadow: 0 8px 22px rgba(110, 20, 35, 0.38), 0 0 0 2px rgba(197, 160, 89, 0.45);
+            box-shadow: 0 8px 22px rgba(110, 20, 35, 0.42), 0 0 0 2px rgba(197, 160, 89, 0.45);
         }
     </style>
 </head>
-<body class="envelope-locked bg-milky text-chocolate antialiased selection:bg-burgundy/20">
+<body class="envelope-locked bg-taupeLight text-chocolate antialiased selection:bg-burgundy/20">
 
     <!-- ХОЛСТ ДЛЯ МЯГКОГО ПАДАЮЩЕГО СНЕГА -->
     <canvas id="snowCanvas" aria-hidden="true"></canvas>
@@ -302,15 +303,15 @@
                     Приглашение на свадьбу
                 </p>
                 <p class="font-serif text-3xl sm:text-4xl text-burgundy leading-tight mb-2">
-                    Елизавета <span class="italic text-gold">&amp;</span> Сергей
+                    Елизавета <span class="italic text-goldAntique">&amp;</span> Сергей
                 </p>
-                <div class="w-12 h-px bg-gold/70 my-2"></div>
+                <div class="w-12 h-px bg-goldAntique/70 my-2"></div>
                 <p class="font-serif text-lg sm:text-xl tracking-[0.25em] text-chocolate">
                     26 • 02 • 2027
                 </p>
             </div>
 
-            <!-- Передний карман конверта (боковые и нижний клапаны с золотой окантовкой) -->
+            <!-- Передний карман конверта -->
             <div class="envelope-pocket">
                 <svg viewBox="0 0 540 370" preserveAspectRatio="none" class="w-full h-full block">
                     <defs>
@@ -330,11 +331,8 @@
                             <feDropShadow dx="0" dy="-3" stdDeviation="4" flood-color="#1A0307" flood-opacity="0.65"/>
                         </filter>
                     </defs>
-                    <!-- Левый треугольник -->
                     <polygon points="0,0 278,195 0,370" fill="url(#velvetLeft)" stroke="#C5A059" stroke-width="1" stroke-opacity="0.45"/>
-                    <!-- Правый треугольник -->
                     <polygon points="540,0 262,195 540,370" fill="url(#velvetRight)" stroke="#C5A059" stroke-width="1" stroke-opacity="0.45"/>
-                    <!-- Нижний трапециевидный клапан -->
                     <polygon points="0,370 235,172 305,172 540,370" fill="url(#velvetBottom)" stroke="#C5A059" stroke-width="1.2" stroke-opacity="0.6" filter="url(#pocketShadow)"/>
                 </svg>
             </div>
@@ -353,7 +351,6 @@
                         </filter>
                     </defs>
                     <path d="M 0,0 L 540,0 L 286,204 Q 270,216 254,204 Z" fill="url(#velvetTopFlap)" stroke="#C5A059" stroke-width="1.4" stroke-opacity="0.75" filter="url(#flapShadow)"/>
-                    <!-- Внутренняя тонкая золотая рамка клапана -->
                     <path d="M 18,8 L 522,8 L 281,192 Q 270,200 259,192 Z" fill="none" stroke="#F3DFAA" stroke-width="0.8" stroke-opacity="0.45"/>
                 </svg>
             </div>
@@ -361,7 +358,7 @@
             <!-- Центральная сургучная печать с монограммой Е & С -->
             <div id="openEnvelopeBtn" class="wax-seal-wrapper">
                 <button type="button" class="wax-seal-btn" aria-label="Открыть конверт с приглашением">
-                    <span class="font-serif italic text-3xl sm:text-4xl text-milky font-semibold tracking-wider leading-none drop-shadow">
+                    <span class="font-serif italic text-3xl sm:text-4xl text-creamSoft font-semibold tracking-wider leading-none drop-shadow">
                         Е <span class="text-xl not-italic text-goldLight">&amp;</span> С
                     </span>
                     <span class="font-sans text-[0.58rem] font-medium tracking-[0.2em] text-goldLight mt-1.5">
@@ -379,51 +376,46 @@
     <button
         type="button"
         id="reopenEnvelopeBtn"
-        class="fixed bottom-4 right-4 z-40 bg-milky/95 backdrop-blur-sm text-chocolate hover:text-burgundy border border-gold/70 hover:border-burgundy rounded-full px-3.5 py-2 text-[0.68rem] font-sans tracking-[0.14em] uppercase shadow-md transition-all duration-300 cursor-pointer"
+        class="fixed bottom-4 right-4 z-40 bg-creamSoft/95 backdrop-blur-sm text-chocolate hover:text-burgundy border border-goldAntique/70 hover:border-burgundy rounded-full px-3.5 py-2 text-[0.68rem] font-sans tracking-[0.14em] uppercase shadow-md transition-all duration-300 cursor-pointer"
         title="Повторно посмотреть открытие конверта"
     >
         Закрыть конверт
     </button>
 
-    <!-- ================= СЛАЙД 1: ГЛАВНЫЙ ЭКРАН (HERO) — МОЛОЧНЫЙ БЕЗ РАМКИ И ФОТО, С РОЗАМИ ПО БОКАМ ================= -->
-    <header class="slide-milky-roses min-h-screen w-full flex flex-col items-center justify-center px-6 sm:px-12 py-24 text-center">
+    <!-- ================= СЛАЙД 1: ГЛАВНЫЙ ЭКРАН (HERO) — ТЁПЛЫЙ ТАУП-ШАМПАНЬ БЕЗ РАМКИ И ФОТО, С РОЗАМИ ПО БОКАМ ================= -->
+    <header class="slide-taupe-roses min-h-screen w-full flex flex-col items-center justify-center px-6 sm:px-12 py-24 text-center">
         <!-- Винтажные бордовые розы слева -->
         <div class="pointer-events-none select-none absolute left-0 top-1/2 -translate-y-1/2 w-28 sm:w-44 md:w-56 opacity-90" aria-hidden="true">
             <svg viewBox="0 0 220 520" class="w-full h-auto">
                 <defs>
                     <radialGradient id="roseGradL1" cx="35%" cy="35%" r="65%">
-                        <stop offset="0%" stop-color="#A62B3E"/>
+                        <stop offset="0%" stop-color="#9B2335"/>
                         <stop offset="55%" stop-color="#6E1423"/>
                         <stop offset="100%" stop-color="#3B0811"/>
                     </radialGradient>
                     <linearGradient id="leafGoldL1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#C5A059"/>
-                        <stop offset="100%" stop-color="#6F5628"/>
+                        <stop offset="0%" stop-color="#9E7831"/>
+                        <stop offset="100%" stop-color="#594218"/>
                     </linearGradient>
                 </defs>
-                <!-- Изящные веточки -->
-                <path d="M -10 90 Q 75 140 55 240 T 25 430" fill="none" stroke="url(#leafGoldL1)" stroke-width="2" opacity="0.65"/>
-                <path d="M 10 170 Q 95 190 115 245" fill="none" stroke="url(#leafGoldL1)" stroke-width="1.6" opacity="0.55"/>
-                <path d="M 5 310 Q 85 330 100 385" fill="none" stroke="url(#leafGoldL1)" stroke-width="1.6" opacity="0.55"/>
-                <!-- Листья -->
-                <ellipse cx="75" cy="145" rx="24" ry="10" transform="rotate(-28 75 145)" fill="url(#leafGoldL1)" opacity="0.55"/>
-                <ellipse cx="95" cy="215" rx="22" ry="9" transform="rotate(24 95 215)" fill="url(#leafGoldL1)" opacity="0.5"/>
-                <ellipse cx="78" cy="345" rx="24" ry="10" transform="rotate(20 78 345)" fill="url(#leafGoldL1)" opacity="0.55"/>
-                <ellipse cx="52" cy="415" rx="20" ry="8" transform="rotate(-32 52 415)" fill="url(#leafGoldL1)" opacity="0.5"/>
-                <!-- Крупная бордовая роза сверху -->
+                <path d="M -10 90 Q 75 140 55 240 T 25 430" fill="none" stroke="url(#leafGoldL1)" stroke-width="2" opacity="0.7"/>
+                <path d="M 10 170 Q 95 190 115 245" fill="none" stroke="url(#leafGoldL1)" stroke-width="1.6" opacity="0.6"/>
+                <path d="M 5 310 Q 85 330 100 385" fill="none" stroke="url(#leafGoldL1)" stroke-width="1.6" opacity="0.6"/>
+                <ellipse cx="75" cy="145" rx="24" ry="10" transform="rotate(-28 75 145)" fill="url(#leafGoldL1)" opacity="0.6"/>
+                <ellipse cx="95" cy="215" rx="22" ry="9" transform="rotate(24 95 215)" fill="url(#leafGoldL1)" opacity="0.55"/>
+                <ellipse cx="78" cy="345" rx="24" ry="10" transform="rotate(20 78 345)" fill="url(#leafGoldL1)" opacity="0.6"/>
+                <ellipse cx="52" cy="415" rx="20" ry="8" transform="rotate(-32 52 415)" fill="url(#leafGoldL1)" opacity="0.55"/>
                 <g transform="translate(26, 125)">
                     <circle r="38" fill="url(#roseGradL1)"/>
                     <path d="M -22 -10 C -10 -28, 18 -26, 24 -6 C 28 12, 8 26, -12 20 C -26 14, -28 -2, -22 -10 Z" fill="none" stroke="#F3DFAA" stroke-width="1.1" opacity="0.55"/>
                     <path d="M -12 -5 C -4 -16, 12 -14, 14 -2 C 16 8, 4 15, -6 11" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.65"/>
                     <circle r="5" fill="#4A0B15"/>
                 </g>
-                <!-- Средняя роза ниже -->
                 <g transform="translate(46, 275)">
                     <circle r="30" fill="url(#roseGradL1)"/>
                     <path d="M -17 -8 C -8 -22, 14 -20, 19 -4 C 22 10, 6 20, -9 16" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
                     <circle r="4" fill="#4A0B15"/>
                 </g>
-                <!-- Бутон снизу -->
                 <g transform="translate(20, 395)">
                     <circle r="22" fill="url(#roseGradL1)"/>
                     <path d="M -11 -5 C -4 -14, 10 -12, 12 -2" fill="none" stroke="#F3DFAA" stroke-width="0.9" opacity="0.55"/>
@@ -436,22 +428,22 @@
             <svg viewBox="0 0 220 520" class="w-full h-auto">
                 <defs>
                     <radialGradient id="roseGradR1" cx="65%" cy="35%" r="65%">
-                        <stop offset="0%" stop-color="#A62B3E"/>
+                        <stop offset="0%" stop-color="#9B2335"/>
                         <stop offset="55%" stop-color="#6E1423"/>
                         <stop offset="100%" stop-color="#3B0811"/>
                     </radialGradient>
                     <linearGradient id="leafGoldR1" x1="100%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#C5A059"/>
-                        <stop offset="100%" stop-color="#6F5628"/>
+                        <stop offset="0%" stop-color="#9E7831"/>
+                        <stop offset="100%" stop-color="#594218"/>
                     </linearGradient>
                 </defs>
-                <path d="M 230 90 Q 145 140 165 240 T 195 430" fill="none" stroke="url(#leafGoldR1)" stroke-width="2" opacity="0.65"/>
-                <path d="M 210 170 Q 125 190 105 245" fill="none" stroke="url(#leafGoldR1)" stroke-width="1.6" opacity="0.55"/>
-                <path d="M 215 310 Q 135 330 120 385" fill="none" stroke="url(#leafGoldR1)" stroke-width="1.6" opacity="0.55"/>
-                <ellipse cx="145" cy="145" rx="24" ry="10" transform="rotate(28 145 145)" fill="url(#leafGoldR1)" opacity="0.55"/>
-                <ellipse cx="125" cy="215" rx="22" ry="9" transform="rotate(-24 125 215)" fill="url(#leafGoldR1)" opacity="0.5"/>
-                <ellipse cx="142" cy="345" rx="24" ry="10" transform="rotate(-20 142 345)" fill="url(#leafGoldR1)" opacity="0.55"/>
-                <ellipse cx="168" cy="415" rx="20" ry="8" transform="rotate(32 168 415)" fill="url(#leafGoldR1)" opacity="0.5"/>
+                <path d="M 230 90 Q 145 140 165 240 T 195 430" fill="none" stroke="url(#leafGoldR1)" stroke-width="2" opacity="0.7"/>
+                <path d="M 210 170 Q 125 190 105 245" fill="none" stroke="url(#leafGoldR1)" stroke-width="1.6" opacity="0.6"/>
+                <path d="M 215 310 Q 135 330 120 385" fill="none" stroke="url(#leafGoldR1)" stroke-width="1.6" opacity="0.6"/>
+                <ellipse cx="145" cy="145" rx="24" ry="10" transform="rotate(28 145 145)" fill="url(#leafGoldR1)" opacity="0.6"/>
+                <ellipse cx="125" cy="215" rx="22" ry="9" transform="rotate(-24 125 215)" fill="url(#leafGoldR1)" opacity="0.55"/>
+                <ellipse cx="142" cy="345" rx="24" ry="10" transform="rotate(-20 142 345)" fill="url(#leafGoldR1)" opacity="0.6"/>
+                <ellipse cx="168" cy="415" rx="20" ry="8" transform="rotate(32 168 415)" fill="url(#leafGoldR1)" opacity="0.55"/>
                 <g transform="translate(194, 125)">
                     <circle r="38" fill="url(#roseGradR1)"/>
                     <path d="M 22 -10 C 10 -28, -18 -26, -24 -6 C -28 12, -8 26, 12 20 C 26 14, 28 -2, 22 -10 Z" fill="none" stroke="#F3DFAA" stroke-width="1.1" opacity="0.55"/>
@@ -477,16 +469,16 @@
             </p>
 
             <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal text-burgundy leading-[1.08] tracking-tight mb-6 sm:mb-8">
-                Елизавета <span class="italic text-gold font-normal">&amp;</span> Сергей
+                Елизавета <span class="italic text-goldAntique font-normal">&amp;</span> Сергей
             </h1>
 
-            <div class="w-20 h-px bg-gold/75 mb-6 sm:mb-8"></div>
+            <div class="w-20 h-px bg-goldAntique/80 mb-6 sm:mb-8"></div>
 
             <p class="font-serif text-2xl sm:text-3xl tracking-[0.28em] text-chocolate mb-4 sm:mb-5">
                 26 • 02 • 2027
             </p>
 
-            <p class="font-sans text-xs sm:text-sm tracking-[0.24em] uppercase text-chocolate/90 mb-12 sm:mb-16">
+            <p class="font-sans text-xs sm:text-sm tracking-[0.24em] uppercase text-chocolate/95 mb-12 sm:mb-16">
                 Бобруйск • Кафе «Тимьян»
             </p>
 
@@ -497,7 +489,7 @@
                 <span class="font-serif italic text-xl sm:text-2xl tracking-wide mb-2">
                     Листать ниже
                 </span>
-                <span class="w-12 h-px bg-gold group-hover:w-20 transition-all duration-300"></span>
+                <span class="w-12 h-px bg-goldAntique group-hover:w-20 transition-all duration-300"></span>
             </a>
         </div>
     </header>
@@ -529,7 +521,7 @@
                     Особенный день в нашей истории
                 </p>
 
-                <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl text-milky font-normal tracking-wide mb-3">
+                <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl text-creamSoft font-normal tracking-wide mb-3">
                     26 февраля 2027
                 </h2>
 
@@ -541,19 +533,19 @@
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-5 max-w-xl mx-auto">
                     <div class="rounded-2xl border border-gold/45 bg-burgundyDeep/75 backdrop-blur-sm px-4 py-5 shadow-lg">
                         <span id="cd-days" class="block font-serif text-3xl sm:text-5xl text-goldLight font-medium">00</span>
-                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-milky/80 mt-1">Дней</span>
+                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-creamSoft/85 mt-1">Дней</span>
                     </div>
                     <div class="rounded-2xl border border-gold/45 bg-burgundyDeep/75 backdrop-blur-sm px-4 py-5 shadow-lg">
                         <span id="cd-hours" class="block font-serif text-3xl sm:text-5xl text-goldLight font-medium">00</span>
-                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-milky/80 mt-1">Часов</span>
+                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-creamSoft/85 mt-1">Часов</span>
                     </div>
                     <div class="rounded-2xl border border-gold/45 bg-burgundyDeep/75 backdrop-blur-sm px-4 py-5 shadow-lg">
                         <span id="cd-minutes" class="block font-serif text-3xl sm:text-5xl text-goldLight font-medium">00</span>
-                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-milky/80 mt-1">Минут</span>
+                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-creamSoft/85 mt-1">Минут</span>
                     </div>
                     <div class="rounded-2xl border border-gold/45 bg-burgundyDeep/75 backdrop-blur-sm px-4 py-5 shadow-lg">
                         <span id="cd-seconds" class="block font-serif text-3xl sm:text-5xl text-goldLight font-medium">00</span>
-                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-milky/80 mt-1">Секунд</span>
+                        <span class="block font-sans text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-creamSoft/85 mt-1">Секунд</span>
                     </div>
                 </div>
             </div>
@@ -579,14 +571,14 @@
             </div>
         </section>
 
-        <!-- СЛАЙД 3: ПОЛНАЯ ПРОГРАММА ПРАЗДНИКА (МОЛОЧНЫЙ ФОН С РОЗАМИ ПО БОКАМ) -->
-        <section id="program" class="slide-milky-roses reveal-block min-h-screen w-full flex items-center px-6 sm:px-12 py-24 sm:py-32">
+        <!-- СЛАЙД 3: ПРОГРАММА ПЕРВОГО ДНЯ (ТЁПЛЫЙ ТАУП-ШАМПАНЬ С РОЗАМИ ПО БОКАМ) -->
+        <section id="program-day1" class="slide-taupe-roses reveal-block min-h-screen w-full flex items-center px-6 sm:px-12 py-24 sm:py-32">
             <!-- Розы слева -->
             <div class="pointer-events-none select-none absolute left-0 top-16 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
                 <svg viewBox="0 0 200 460" class="w-full h-auto">
-                    <path d="M -5 70 Q 65 120 45 220 T 20 390" fill="none" stroke="#B58D44" stroke-width="1.8" opacity="0.6"/>
-                    <ellipse cx="62" cy="135" rx="22" ry="9" transform="rotate(-25 62 135)" fill="#C5A059" opacity="0.5"/>
-                    <ellipse cx="75" cy="245" rx="20" ry="8" transform="rotate(22 75 245)" fill="#C5A059" opacity="0.5"/>
+                    <path d="M -5 70 Q 65 120 45 220 T 20 390" fill="none" stroke="#9E7831" stroke-width="1.8" opacity="0.65"/>
+                    <ellipse cx="62" cy="135" rx="22" ry="9" transform="rotate(-25 62 135)" fill="#9E7831" opacity="0.55"/>
+                    <ellipse cx="75" cy="245" rx="20" ry="8" transform="rotate(22 75 245)" fill="#9E7831" opacity="0.55"/>
                     <circle cx="24" cy="115" r="32" fill="#6E1423"/>
                     <circle cx="24" cy="115" r="18" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
                     <circle cx="38" cy="260" r="24" fill="#6E1423"/>
@@ -597,9 +589,9 @@
             <!-- Розы справа -->
             <div class="pointer-events-none select-none absolute right-0 bottom-16 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
                 <svg viewBox="0 0 200 460" class="w-full h-auto">
-                    <path d="M 205 70 Q 135 120 155 220 T 180 390" fill="none" stroke="#B58D44" stroke-width="1.8" opacity="0.6"/>
-                    <ellipse cx="138" cy="135" rx="22" ry="9" transform="rotate(25 138 135)" fill="#C5A059" opacity="0.5"/>
-                    <ellipse cx="125" cy="245" rx="20" ry="8" transform="rotate(-22 125 245)" fill="#C5A059" opacity="0.5"/>
+                    <path d="M 205 70 Q 135 120 155 220 T 180 390" fill="none" stroke="#9E7831" stroke-width="1.8" opacity="0.65"/>
+                    <ellipse cx="138" cy="135" rx="22" ry="9" transform="rotate(25 138 135)" fill="#9E7831" opacity="0.55"/>
+                    <ellipse cx="125" cy="245" rx="20" ry="8" transform="rotate(-22 125 245)" fill="#9E7831" opacity="0.55"/>
                     <circle cx="176" cy="115" r="24" fill="#6E1423"/>
                     <circle cx="162" cy="260" r="32" fill="#6E1423"/>
                     <circle cx="162" cy="260" r="18" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
@@ -609,19 +601,19 @@
 
             <div class="relative z-10 max-w-2xl mx-auto w-full">
                 <div class="text-center mb-10 sm:mb-12">
-                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldDark mb-2">
+                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldDark mb-2 font-medium">
                         Пятница • 26 февраля 2027 • Бобруйск
                     </p>
                     <h3 class="font-serif text-3xl sm:text-5xl text-burgundy font-normal">
-                        Программа дня
+                        Программа первого дня
                     </h3>
                 </div>
 
                 <!-- Все 4 пункта программы первого дня с иконками и романтическими предложениями -->
-                <div class="space-y-4 sm:space-y-5 mb-8">
+                <div class="space-y-4 sm:space-y-5">
                     <!-- 16:00 Церемония в кафе «Тимьян» -->
-                    <div class="rounded-2xl border border-gold/45 bg-white/85 backdrop-blur-sm p-5 sm:p-6 shadow-sm flex items-start gap-4 sm:gap-5">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gold/60 bg-burgundy/5 flex items-center justify-center shrink-0 text-burgundy">
+                    <div class="rounded-2xl border border-goldAntique/50 bg-creamSoft/90 backdrop-blur-sm p-5 sm:p-6 shadow-md flex items-start gap-4 sm:gap-5">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-goldAntique/65 bg-burgundy/10 flex items-center justify-center shrink-0 text-burgundy">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <circle cx="9.5" cy="13.5" r="5.5"/>
                                 <circle cx="14.5" cy="13.5" r="5.5"/>
@@ -633,15 +625,15 @@
                                 <span class="font-serif text-2xl sm:text-3xl text-burgundy font-medium">16:00</span>
                                 <h4 class="font-serif text-xl sm:text-2xl text-chocolate font-medium">Свадебная церемония в кафе «Тимьян»</h4>
                             </div>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed">
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed">
                                 Приглашаем вас стать свидетелями самого трогательного мгновения — момента, когда мы произнесём заветное «Да» и соединим наши судьбы в кругу самых дорогих и близких людей.
                             </p>
                         </div>
                     </div>
 
                     <!-- 17:00 Праздничный банкет -->
-                    <div class="rounded-2xl border border-gold/45 bg-white/85 backdrop-blur-sm p-5 sm:p-6 shadow-sm flex items-start gap-4 sm:gap-5">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gold/60 bg-burgundy/5 flex items-center justify-center shrink-0 text-burgundy">
+                    <div class="rounded-2xl border border-goldAntique/50 bg-creamSoft/90 backdrop-blur-sm p-5 sm:p-6 shadow-md flex items-start gap-4 sm:gap-5">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-goldAntique/65 bg-burgundy/10 flex items-center justify-center shrink-0 text-burgundy">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M8 3h8l-1 7a3 3 0 0 1-6 0L8 3z"/>
                                 <path d="M12 13v7"/>
@@ -654,15 +646,15 @@
                                 <span class="font-serif text-2xl sm:text-3xl text-burgundy font-medium">17:00</span>
                                 <h4 class="font-serif text-xl sm:text-2xl text-chocolate font-medium">Праздничный банкет</h4>
                             </div>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed">
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed">
                                 Время душевных тостов, изысканного ужина, тёплых объятий и искреннего смеха в уютной атмосфере кафе «Тимьян» города Бобруйска.
                             </p>
                         </div>
                     </div>
 
                     <!-- 22:00 Свадебный торт -->
-                    <div class="rounded-2xl border border-gold/45 bg-white/85 backdrop-blur-sm p-5 sm:p-6 shadow-sm flex items-start gap-4 sm:gap-5">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gold/60 bg-burgundy/5 flex items-center justify-center shrink-0 text-burgundy">
+                    <div class="rounded-2xl border border-goldAntique/50 bg-creamSoft/90 backdrop-blur-sm p-5 sm:p-6 shadow-md flex items-start gap-4 sm:gap-5">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-goldAntique/65 bg-burgundy/10 flex items-center justify-center shrink-0 text-burgundy">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <rect x="4" y="14" width="16" height="6" rx="1.5"/>
                                 <rect x="6.5" y="9" width="11" height="5" rx="1"/>
@@ -675,15 +667,15 @@
                                 <span class="font-serif text-2xl sm:text-3xl text-burgundy font-medium">22:00</span>
                                 <h4 class="font-serif text-xl sm:text-2xl text-chocolate font-medium">Свадебный торт</h4>
                             </div>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed">
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed">
                                 Сладкая кульминация нашего вечера: разделим первый кусочек свадебного торта за чашкой ароматного чая и тёплыми разговорами.
                             </p>
                         </div>
                     </div>
 
                     <!-- 24:00 Прощание с гостями -->
-                    <div class="rounded-2xl border border-gold/45 bg-white/85 backdrop-blur-sm p-5 sm:p-6 shadow-sm flex items-start gap-4 sm:gap-5">
-                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-gold/60 bg-burgundy/5 flex items-center justify-center shrink-0 text-burgundy">
+                    <div class="rounded-2xl border border-goldAntique/50 bg-creamSoft/90 backdrop-blur-sm p-5 sm:p-6 shadow-md flex items-start gap-4 sm:gap-5">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-goldAntique/65 bg-burgundy/10 flex items-center justify-center shrink-0 text-burgundy">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z"/>
                                 <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/>
@@ -694,107 +686,87 @@
                                 <span class="font-serif text-2xl sm:text-3xl text-burgundy font-medium">24:00</span>
                                 <h4 class="font-serif text-xl sm:text-2xl text-chocolate font-medium">Прощание с гостями</h4>
                             </div>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed">
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed">
                                 Завершение первого дня нашего праздника под сияние огней, с благодарностью каждому из вас за подаренные эмоции и незабываемый вечер.
                             </p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Второй день на усадьбе «Чистые Пруды» к 14:00 -->
-                <div class="rounded-2xl border border-gold/60 bg-burgundy text-milky p-6 sm:p-8 shadow-lg">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                        <span class="font-sans text-xs tracking-[0.25em] uppercase text-goldLight">
-                            Суббота • 27 февраля 2027 • к 14:00
-                        </span>
-                        <span class="inline-block font-serif italic text-lg text-goldLight">
-                            Усадьба «Чистые Пруды»
-                        </span>
-                    </div>
-                    <h4 class="font-serif text-2xl sm:text-3xl text-milky font-normal mb-2">
-                        Продолжение торжества — второй день
-                    </h4>
-                    <p class="font-sans text-xs sm:text-sm text-milky/90 leading-relaxed">
-                        Будем рады продолжить наш тёплый семейный уикенд на усадьбе «Чистые Пруды» к <span class="text-goldLight font-medium">14:00</span>. Для вашего удобства будет организован <span class="text-goldLight font-medium">трансфер</span> — пожалуйста, отметьте в анкете ниже, планируете ли вы быть и понадобится ли вам дорога.
-                    </p>
-                </div>
             </div>
         </section>
 
-        <!-- СЛАЙД 4: ДРЕСС-КОД И ПОЖЕЛАНИЯ (БОРДОВЫЙ С ФРАГМЕНТАМИ СТАРИННОЙ 3D-РАМКИ) -->
-        <section id="details" class="slide-burgundy-ornate reveal-block min-h-screen w-full flex flex-col justify-between items-center px-6 sm:px-10 py-10 sm:py-14">
+        <!-- СЛАЙД 4: ОТДЕЛЬНЫЙ СЛАЙД ДЛЯ ВТОРОГО ДНЯ (БОРДОВЫЙ С ФРАГМЕНТАМИ СТАРИННОЙ 3D-РАМКИ) -->
+        <section id="program-day2" class="slide-burgundy-ornate reveal-block min-h-screen w-full flex flex-col justify-between items-center px-6 sm:px-10 py-10 sm:py-14">
             <!-- Верхний объёмный золотой вензель -->
             <div class="w-full max-w-md mx-auto pointer-events-none select-none ornament-3d-shadow">
                 <svg viewBox="0 0 420 75" class="w-64 sm:w-80 mx-auto h-auto">
                     <defs>
-                        <linearGradient id="baroqueGoldTop2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="baroqueGoldTopDay2" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#FFF5D6"/>
                             <stop offset="35%" stop-color="#E3C176"/>
                             <stop offset="70%" stop-color="#AE8336"/>
                             <stop offset="100%" stop-color="#694A14"/>
                         </linearGradient>
                     </defs>
-                    <path d="M 210 10 C 218 22, 232 24, 245 18 C 258 12, 272 22, 285 26 C 305 32, 328 20, 345 28 C 332 38, 312 36, 298 44 C 282 52, 265 42, 248 46 C 234 50, 222 60, 210 66 C 198 60, 186 50, 172 46 C 155 42, 138 52, 122 44 C 108 36, 88 38, 75 28 C 92 20, 115 32, 135 26 C 148 22, 162 12, 175 18 C 188 24, 202 22, 210 10 Z" fill="url(#baroqueGoldTop2)" stroke="#FFF6DC" stroke-width="0.8"/>
+                    <path d="M 210 10 C 218 22, 232 24, 245 18 C 258 12, 272 22, 285 26 C 305 32, 328 20, 345 28 C 332 38, 312 36, 298 44 C 282 52, 265 42, 248 46 C 234 50, 222 60, 210 66 C 198 60, 186 50, 172 46 C 155 42, 138 52, 122 44 C 108 36, 88 38, 75 28 C 92 20, 115 32, 135 26 C 148 22, 162 12, 175 18 C 188 24, 202 22, 210 10 Z" fill="url(#baroqueGoldTopDay2)" stroke="#FFF6DC" stroke-width="0.8"/>
                     <circle cx="210" cy="36" r="6" fill="#FFF2CE"/>
                 </svg>
             </div>
 
-            <!-- Центральный контент слайда -->
-            <div class="max-w-2xl mx-auto w-full my-auto py-8">
-                <div class="text-center mb-10 sm:mb-12">
-                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldLight/90 mb-2">
-                        Детали и атмосфера
-                    </p>
-                    <h3 class="font-serif text-3xl sm:text-5xl text-milky font-normal">
-                        Дресс-код и пожелания
-                    </h3>
-                </div>
+            <!-- Центральный контент второго дня -->
+            <div class="max-w-2xl mx-auto w-full my-auto py-8 text-center">
+                <p class="font-sans text-xs sm:text-sm tracking-[0.32em] uppercase text-goldLight/90 mb-3">
+                    Суббота • 27 февраля 2027
+                </p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Карточка дресс-кода -->
-                    <div class="rounded-2xl border border-gold/50 bg-milky/95 backdrop-blur-sm p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-                        <div>
-                            <h4 class="font-serif text-2xl sm:text-3xl text-burgundy mb-3">
-                                Палитра вечера
-                            </h4>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed mb-6">
-                                Строгого дресс-кода на нашей свадьбе нет — для нас важнее всего ваш комфорт и улыбки. Но если вам захочется поддержать эстетику торжества, мы будем рады оттенкам <span class="text-burgundy font-medium">бордового, шоколадного и молочного</span> в ваших образах.
-                            </p>
+                <h3 class="font-serif text-4xl sm:text-6xl text-creamSoft font-normal mb-3">
+                    Второй день праздника
+                </h3>
+
+                <p class="font-serif italic text-2xl sm:text-3xl text-goldLight mb-8 sm:mb-10">
+                    Усадьба «Чистые Пруды» • Сбор к 14:00
+                </p>
+
+                <div class="rounded-3xl border border-gold/55 bg-burgundyDeep/80 backdrop-blur-sm p-6 sm:p-10 shadow-2xl text-left">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-gold/30">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full border border-gold/65 bg-burgundy/60 flex items-center justify-center shrink-0 text-goldLight">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 10.5L12 3l9 7.5"/>
+                                    <path d="M5 9.5V20h14V9.5"/>
+                                    <path d="M9.5 20v-6h5v6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block font-sans text-[0.68rem] tracking-[0.22em] uppercase text-goldLight/80">Локация</span>
+                                <span class="font-serif text-2xl text-creamSoft">Усадьба «Чистые Пруды»</span>
+                            </div>
                         </div>
 
-                        <!-- Образцы оттенков -->
-                        <div class="flex items-center justify-center gap-5 pt-4 border-t border-gold/25">
-                            <div class="flex flex-col items-center gap-1.5">
-                                <span class="w-11 h-11 rounded-full border border-gold/60 shadow-inner" style="background-color: #6E1423;"></span>
-                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/80">Бордовый</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-1.5">
-                                <span class="w-11 h-11 rounded-full border border-gold/60 shadow-inner" style="background-color: #3B2018;"></span>
-                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/80">Шоколадный</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-1.5">
-                                <span class="w-11 h-11 rounded-full border border-gold/70 shadow-inner" style="background-color: #F5EFE6;"></span>
-                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/80">Молочный</span>
+                        <div class="flex items-center gap-3 sm:text-right">
+                            <div>
+                                <span class="block font-sans text-[0.68rem] tracking-[0.22em] uppercase text-goldLight/80">Время сбора</span>
+                                <span class="font-serif text-2xl sm:text-3xl text-goldLight font-medium">к 14:00</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Карточка пожелания про вино вместо цветов -->
-                    <div class="rounded-2xl border border-gold/50 bg-milky/95 backdrop-blur-sm p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-                        <div>
-                            <h4 class="font-serif text-2xl sm:text-3xl text-burgundy mb-3">
-                                Вместо цветов
-                            </h4>
-                            <p class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed mb-6">
-                                Мы очень любим живые цветы, но в зимнюю погоду букеты быстро теряют свою свежесть. Поэтому вместо цветов мы с радостью примем в подарок <span class="text-burgundy font-medium">бутылочку вашего любимого красного вина</span>, которую откроем на наших будущих семейных ужинах.
-                            </p>
-                        </div>
+                    <p class="font-sans text-xs sm:text-sm text-creamSoft/90 leading-relaxed mb-5">
+                        Нам так не хочется расставаться с вами после свадебного вечера! Поэтому на следующий день, <span class="text-goldLight font-medium">27 февраля к 14:00</span>, мы ждём вас на живописной <span class="text-goldLight font-medium">усадьбе «Чистые Пруды»</span> — для неспешных разговоров, душевного отдыха на природе и тёплых воспоминаний.
+                    </p>
 
-                        <div class="pt-4 border-t border-gold/25 text-center">
-                            <p class="font-serif italic text-lg text-goldDark">
-                                «Вино хранит тепло дружеских встреч»
-                            </p>
+                    <div class="rounded-2xl border border-gold/40 bg-burgundy/45 p-4 sm:p-5 flex items-start gap-3.5">
+                        <div class="text-goldLight mt-0.5 shrink-0">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <rect x="3" y="6" width="18" height="11" rx="2"/>
+                                <circle cx="7.5" cy="17.5" r="1.5"/>
+                                <circle cx="16.5" cy="17.5" r="1.5"/>
+                                <path d="M3 11h18"/>
+                            </svg>
                         </div>
+                        <p class="font-sans text-xs sm:text-sm text-creamSoft/95 leading-relaxed">
+                            <span class="text-goldLight font-medium">Трансфер для гостей:</span> чтобы дорога была максимально комфортной, мы организуем трансфер до усадьбы и обратно. Пожалуйста, укажите в анкете ниже, планируете ли вы быть на втором дне и понадобится ли вам место в трансфере.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -803,7 +775,7 @@
             <div class="w-full max-w-4xl mx-auto pointer-events-none select-none ornament-3d-shadow">
                 <svg viewBox="0 0 800 140" class="w-full h-auto">
                     <defs>
-                        <linearGradient id="baroqueGoldBot2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <linearGradient id="baroqueGoldBotDay2" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" stop-color="#E7C87D"/>
                             <stop offset="25%" stop-color="#AE8336"/>
                             <stop offset="50%" stop-color="#FFF2CE"/>
@@ -811,52 +783,126 @@
                             <stop offset="100%" stop-color="#E7C87D"/>
                         </linearGradient>
                     </defs>
-                    <path d="M 24 18 C 34 45, 22 75, 42 98 C 62 120, 105 112, 145 122 C 115 130, 68 134, 34 114 C 14 100, 12 58, 24 18 Z" fill="url(#baroqueGoldBot2)" stroke="#FFF5D6" stroke-width="0.9"/>
-                    <path d="M 45 55 C 62 72, 58 95, 85 105 C 72 112, 48 106, 42 86 Z" fill="url(#baroqueGoldBot2)"/>
-                    <path d="M 145 122 C 215 116, 285 128, 355 122 C 375 114, 388 102, 400 96 C 412 102, 425 114, 445 122 C 515 128, 585 116, 655 122 C 600 132, 510 134, 442 128 C 425 126, 412 134, 400 136 C 388 134, 375 126, 358 128 C 290 134, 200 132, 145 122 Z" fill="url(#baroqueGoldBot2)" stroke="#FFF5D6" stroke-width="0.9"/>
-                    <path d="M 776 18 C 766 45, 778 75, 758 98 C 738 120, 695 112, 655 122 C 685 130, 732 134, 766 114 C 786 100, 788 58, 776 18 Z" fill="url(#baroqueGoldBot2)" stroke="#FFF5D6" stroke-width="0.9"/>
-                    <path d="M 755 55 C 738 72, 742 95, 715 105 C 728 112, 752 106, 758 86 Z" fill="url(#baroqueGoldBot2)"/>
+                    <path d="M 24 18 C 34 45, 22 75, 42 98 C 62 120, 105 112, 145 122 C 115 130, 68 134, 34 114 C 14 100, 12 58, 24 18 Z" fill="url(#baroqueGoldBotDay2)" stroke="#FFF5D6" stroke-width="0.9"/>
+                    <path d="M 45 55 C 62 72, 58 95, 85 105 C 72 112, 48 106, 42 86 Z" fill="url(#baroqueGoldBotDay2)"/>
+                    <path d="M 145 122 C 215 116, 285 128, 355 122 C 375 114, 388 102, 400 96 C 412 102, 425 114, 445 122 C 515 128, 585 116, 655 122 C 600 132, 510 134, 442 128 C 425 126, 412 134, 400 136 C 388 134, 375 126, 358 128 C 290 134, 200 132, 145 122 Z" fill="url(#baroqueGoldBotDay2)" stroke="#FFF5D6" stroke-width="0.9"/>
+                    <path d="M 776 18 C 766 45, 778 75, 758 98 C 738 120, 695 112, 655 122 C 685 130, 732 134, 766 114 C 786 100, 788 58, 776 18 Z" fill="url(#baroqueGoldBotDay2)" stroke="#FFF5D6" stroke-width="0.9"/>
+                    <path d="M 755 55 C 738 72, 742 95, 715 105 C 728 112, 752 106, 758 86 Z" fill="url(#baroqueGoldBotDay2)"/>
                 </svg>
             </div>
         </section>
 
-        <!-- СЛАЙД 5: АНКЕТА ГОСТЯ (МОЛОЧНЫЙ ФОН С РОЗАМИ ПО БОКАМ И ВЫДЕЛЕННЫМИ ПОЛОЖИТЕЛЬНЫМИ ОТВЕТАМИ) -->
-        <section id="rsvp" class="slide-milky-roses reveal-block min-h-screen w-full flex items-center px-6 sm:px-12 py-24 sm:py-32">
+        <!-- СЛАЙД 5: ДРЕСС-КОД И ПОЖЕЛАНИЯ (ТЁПЛЫЙ ТАУП-ШАМПАНЬ С РОЗАМИ ПО БОКАМ) -->
+        <section id="details" class="slide-taupe-roses reveal-block min-h-screen w-full flex items-center px-6 sm:px-12 py-24 sm:py-32">
             <!-- Розы слева -->
-            <div class="pointer-events-none select-none absolute left-0 bottom-20 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
+            <div class="pointer-events-none select-none absolute left-0 top-20 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
                 <svg viewBox="0 0 200 460" class="w-full h-auto">
-                    <path d="M -5 70 Q 65 120 45 220 T 20 390" fill="none" stroke="#B58D44" stroke-width="1.8" opacity="0.6"/>
-                    <ellipse cx="62" cy="155" rx="22" ry="9" transform="rotate(-25 62 155)" fill="#C5A059" opacity="0.5"/>
-                    <ellipse cx="75" cy="275" rx="20" ry="8" transform="rotate(22 75 275)" fill="#C5A059" opacity="0.5"/>
-                    <circle cx="24" cy="135" r="24" fill="#6E1423"/>
-                    <circle cx="38" cy="285" r="32" fill="#6E1423"/>
-                    <circle cx="38" cy="285" r="18" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
-                    <circle cx="18" cy="390" r="20" fill="#6E1423"/>
+                    <path d="M -5 70 Q 65 120 45 220 T 20 390" fill="none" stroke="#9E7831" stroke-width="1.8" opacity="0.65"/>
+                    <ellipse cx="62" cy="145" rx="22" ry="9" transform="rotate(-25 62 145)" fill="#9E7831" opacity="0.55"/>
+                    <circle cx="24" cy="125" r="30" fill="#6E1423"/>
+                    <circle cx="24" cy="125" r="16" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
+                    <circle cx="38" cy="275" r="22" fill="#6E1423"/>
                 </svg>
             </div>
 
             <!-- Розы справа -->
-            <div class="pointer-events-none select-none absolute right-0 top-20 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
+            <div class="pointer-events-none select-none absolute right-0 bottom-20 w-24 sm:w-40 md:w-48 opacity-85" aria-hidden="true">
                 <svg viewBox="0 0 200 460" class="w-full h-auto">
-                    <path d="M 205 70 Q 135 120 155 220 T 180 390" fill="none" stroke="#B58D44" stroke-width="1.8" opacity="0.6"/>
-                    <ellipse cx="138" cy="155" rx="22" ry="9" transform="rotate(25 138 155)" fill="#C5A059" opacity="0.5"/>
-                    <ellipse cx="125" cy="275" rx="20" ry="8" transform="rotate(-22 125 275)" fill="#C5A059" opacity="0.5"/>
-                    <circle cx="176" cy="135" r="32" fill="#6E1423"/>
-                    <circle cx="176" cy="135" r="18" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
-                    <circle cx="162" cy="285" r="24" fill="#6E1423"/>
-                    <circle cx="182" cy="390" r="18" fill="#6E1423"/>
+                    <path d="M 205 70 Q 135 120 155 220 T 180 390" fill="none" stroke="#9E7831" stroke-width="1.8" opacity="0.65"/>
+                    <ellipse cx="138" cy="145" rx="22" ry="9" transform="rotate(25 138 145)" fill="#9E7831" opacity="0.55"/>
+                    <circle cx="162" cy="260" r="30" fill="#6E1423"/>
+                    <circle cx="162" cy="260" r="16" fill="none" stroke="#F3DFAA" stroke-width="1" opacity="0.55"/>
+                    <circle cx="182" cy="370" r="20" fill="#6E1423"/>
                 </svg>
             </div>
 
-            <div class="relative z-10 max-w-2xl mx-auto w-full bg-white/90 border border-gold/55 rounded-3xl p-6 sm:p-12 shadow-xl">
+            <div class="relative z-10 max-w-2xl mx-auto w-full">
+                <div class="text-center mb-10 sm:mb-12">
+                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldDark mb-2 font-medium">
+                        Детали и атмосфера
+                    </p>
+                    <h3 class="font-serif text-3xl sm:text-5xl text-burgundy font-normal">
+                        Дресс-код и пожелания
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Карточка дресс-кода -->
+                    <div class="rounded-2xl border border-goldAntique/55 bg-creamSoft/95 backdrop-blur-sm p-6 sm:p-8 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-serif text-2xl sm:text-3xl text-burgundy mb-3">
+                                Палитра вечера
+                            </h4>
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed mb-6">
+                                Строгого дресс-кода на нашей свадьбе нет — для нас важнее всего ваш комфорт и улыбки. Но если вам захочется поддержать эстетику торжества, мы будем рады оттенкам <span class="text-burgundy font-medium">бордового, шоколадного и молочного</span> в ваших образах.
+                            </p>
+                        </div>
+
+                        <!-- Образцы оттенков -->
+                        <div class="flex items-center justify-center gap-5 pt-4 border-t border-goldAntique/30">
+                            <div class="flex flex-col items-center gap-1.5">
+                                <span class="w-11 h-11 rounded-full border border-goldAntique/70 shadow-inner" style="background-color: #6E1423;"></span>
+                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/85">Бордовый</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1.5">
+                                <span class="w-11 h-11 rounded-full border border-goldAntique/70 shadow-inner" style="background-color: #3B2018;"></span>
+                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/85">Шоколадный</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-1.5">
+                                <span class="w-11 h-11 rounded-full border border-goldAntique/70 shadow-inner" style="background-color: #F5EFE6;"></span>
+                                <span class="font-sans text-[0.68rem] tracking-wider uppercase text-chocolate/85">Молочный</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Карточка пожелания про вино вместо цветов -->
+                    <div class="rounded-2xl border border-goldAntique/55 bg-creamSoft/95 backdrop-blur-sm p-6 sm:p-8 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-serif text-2xl sm:text-3xl text-burgundy mb-3">
+                                Вместо цветов
+                            </h4>
+                            <p class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed mb-6">
+                                Мы очень любим живые цветы, но в зимнюю погоду букеты быстро теряют свою свежесть. Поэтому вместо цветов мы с радостью примем в подарок <span class="text-burgundy font-medium">бутылочку вашего любимого красного вина</span>, которую откроем на наших будущих семейных ужинах.
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-goldAntique/30 text-center">
+                            <p class="font-serif italic text-lg text-goldDark">
+                                «Вино хранит тепло дружеских встреч»
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 6: АНКЕТА ГОСТЯ (БОРДОВЫЙ С ФРАГМЕНТАМИ СТАРИННОЙ 3D-РАМКИ И ВЫДЕЛЕННЫМИ ПОЛОЖИТЕЛЬНЫМИ ОТВЕТАМИ) -->
+        <section id="rsvp" class="slide-burgundy-ornate reveal-block min-h-screen w-full flex flex-col justify-between items-center px-6 sm:px-10 py-10 sm:py-14">
+            <!-- Верхний объёмный золотой вензель -->
+            <div class="w-full max-w-md mx-auto mb-8 pointer-events-none select-none ornament-3d-shadow">
+                <svg viewBox="0 0 420 75" class="w-64 sm:w-80 mx-auto h-auto">
+                    <defs>
+                        <linearGradient id="baroqueGoldTopRsvp" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF5D6"/>
+                            <stop offset="35%" stop-color="#E3C176"/>
+                            <stop offset="70%" stop-color="#AE8336"/>
+                            <stop offset="100%" stop-color="#694A14"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 210 10 C 218 22, 232 24, 245 18 C 258 12, 272 22, 285 26 C 305 32, 328 20, 345 28 C 332 38, 312 36, 298 44 C 282 52, 265 42, 248 46 C 234 50, 222 60, 210 66 C 198 60, 186 50, 172 46 C 155 42, 138 52, 122 44 C 108 36, 88 38, 75 28 C 92 20, 115 32, 135 26 C 148 22, 162 12, 175 18 C 188 24, 202 22, 210 10 Z" fill="url(#baroqueGoldTopRsvp)" stroke="#FFF6DC" stroke-width="0.8"/>
+                    <circle cx="210" cy="36" r="6" fill="#FFF2CE"/>
+                </svg>
+            </div>
+
+            <div class="relative z-10 max-w-2xl mx-auto w-full bg-creamSoft/95 border border-gold/65 rounded-3xl p-6 sm:p-12 shadow-2xl my-4">
                 <div class="text-center mb-8 sm:mb-10">
-                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldDark mb-2">
+                    <p class="font-sans text-xs tracking-[0.28em] uppercase text-goldDark mb-2 font-medium">
                         Подтверждение присутствия
                     </p>
                     <h3 class="font-serif text-3xl sm:text-5xl text-burgundy font-normal mb-3">
                         Анкета гостя
                     </h3>
-                    <p class="font-sans text-xs sm:text-sm text-chocolate/80 max-w-lg mx-auto leading-relaxed">
+                    <p class="font-sans text-xs sm:text-sm text-chocolate/85 max-w-lg mx-auto leading-relaxed">
                         Пожалуйста, заполните анкету до <span class="text-burgundy font-medium">1 февраля 2027 года</span>. Если у вас останутся вопросы, обязательно напишите их в примечании.
                     </p>
                 </div>
@@ -876,7 +922,7 @@
                             name="Имя_и_Фамилия"
                             required
                             placeholder="Например: Анна и Дмитрий Ивановы"
-                            class="w-full rounded-xl border border-gold/55 bg-milky/60 px-4 py-3 font-sans text-sm text-chocolate placeholder:text-chocolate/40 focus:outline-none focus:border-burgundy"
+                            class="w-full rounded-xl border border-goldAntique/60 bg-taupeLight/45 px-4 py-3 font-sans text-sm text-chocolate placeholder:text-chocolate/45 focus:outline-none focus:border-burgundy"
                         />
                     </div>
 
@@ -894,7 +940,7 @@
                             </div>
                             <div>
                                 <input type="radio" id="day1No" name="Присутствие_на_торжестве" value="К сожалению, не смогу" class="custom-option hidden">
-                                <label for="day1No" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-4 py-3.5 font-sans text-xs sm:text-sm text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="day1No" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-4 py-3.5 font-sans text-xs sm:text-sm text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     К сожалению, не смогу
                                 </label>
                             </div>
@@ -915,7 +961,7 @@
                             </div>
                             <div>
                                 <input type="radio" id="day2No" name="Второй_день_Чистые_Пруды" value="Нет, только первый день" class="custom-option hidden">
-                                <label for="day2No" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-4 py-3.5 font-sans text-xs sm:text-sm text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="day2No" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-4 py-3.5 font-sans text-xs sm:text-sm text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Нет, только первый день
                                 </label>
                             </div>
@@ -936,13 +982,13 @@
                             </div>
                             <div>
                                 <input type="radio" id="transferSelf" name="Трансфер_на_второй_день" value="Нет, доберусь самостоятельно" class="custom-option hidden">
-                                <label for="transferSelf" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-3.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="transferSelf" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-3.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Нет, доберусь самостоятельно
                                 </label>
                             </div>
                             <div>
                                 <input type="radio" id="transferNone" name="Трансфер_на_второй_день" value="Не буду на втором дне" class="custom-option hidden">
-                                <label for="transferNone" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-3.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="transferNone" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-3.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Не буду на 2-м дне
                                 </label>
                             </div>
@@ -957,31 +1003,31 @@
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                             <div>
                                 <input type="checkbox" id="drinkWineRed" name="Напитки[]" value="Красное вино" class="custom-option hidden">
-                                <label for="drinkWineRed" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="drinkWineRed" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Красное вино
                                 </label>
                             </div>
                             <div>
                                 <input type="checkbox" id="drinkWineWhite" name="Напитки[]" value="Белое вино" class="custom-option hidden">
-                                <label for="drinkWineWhite" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="drinkWineWhite" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Белое вино
                                 </label>
                             </div>
                             <div>
                                 <input type="checkbox" id="drinkSparkling" name="Напитки[]" value="Шампанское" class="custom-option hidden">
-                                <label for="drinkSparkling" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="drinkSparkling" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Шампанское
                                 </label>
                             </div>
                             <div>
                                 <input type="checkbox" id="drinkStrong" name="Напитки[]" value="Крепкие напитки" class="custom-option hidden">
-                                <label for="drinkStrong" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="drinkStrong" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Крепкие напитки
                                 </label>
                             </div>
                             <div class="col-span-2 sm:col-span-2">
                                 <input type="checkbox" id="drinkNonAlc" name="Напитки[]" value="Безалкогольные напитки" class="custom-option hidden">
-                                <label for="drinkNonAlc" class="block text-center rounded-xl border border-gold/55 bg-milky/70 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
+                                <label for="drinkNonAlc" class="block text-center rounded-xl border border-goldAntique/55 bg-taupeLight/40 px-3 py-2.5 font-sans text-xs text-chocolate cursor-pointer transition-all hover:border-burgundy">
                                     Безалкогольные напитки
                                 </label>
                             </div>
@@ -998,72 +1044,57 @@
                             name="Примечание_и_вопросы"
                             rows="3"
                             placeholder="Напишите здесь, если у вас есть вопросы, пожелания или особенности по меню..."
-                            class="w-full rounded-xl border border-gold/55 bg-milky/60 px-4 py-3 font-sans text-sm text-chocolate placeholder:text-chocolate/40 focus:outline-none focus:border-burgundy"
+                            class="w-full rounded-xl border border-goldAntique/60 bg-taupeLight/45 px-4 py-3 font-sans text-sm text-chocolate placeholder:text-chocolate/45 focus:outline-none focus:border-burgundy"
                         ></textarea>
                     </div>
 
                     <button
                         type="submit"
                         id="submitRsvpBtn"
-                        class="w-full rounded-xl bg-burgundy hover:bg-burgundyDeep text-milky font-sans text-xs sm:text-sm tracking-[0.22em] uppercase py-4 px-6 shadow-md transition-all duration-300 cursor-pointer"
+                        class="w-full rounded-xl bg-burgundy hover:bg-burgundyDeep text-creamSoft font-sans text-xs sm:text-sm tracking-[0.22em] uppercase py-4 px-6 shadow-md transition-all duration-300 cursor-pointer"
                     >
                         Отправить ответ
                     </button>
                 </form>
 
                 <!-- Статус после отправки -->
-                <div id="formFeedback" class="hidden mt-6 rounded-2xl border border-gold/60 bg-milkySoft/90 p-6 text-center">
+                <div id="formFeedback" class="hidden mt-6 rounded-2xl border border-goldAntique/65 bg-taupeLight/65 p-6 text-center">
                     <p id="formFeedbackTitle" class="font-serif text-2xl sm:text-3xl text-burgundy mb-2"></p>
-                    <p id="formFeedbackText" class="font-sans text-xs sm:text-sm text-chocolate/85 leading-relaxed"></p>
+                    <p id="formFeedbackText" class="font-sans text-xs sm:text-sm text-chocolate/90 leading-relaxed"></p>
+                </div>
+            </div>
+
+            <!-- Финальная подпись и нижний объёмный фрагмент старинной рамки -->
+            <div class="w-full max-w-4xl mx-auto mt-8 text-center">
+                <div class="inline-flex flex-col items-center mb-6">
+                    <div class="w-14 h-14 rounded-full border border-gold/75 bg-burgundyDeep/70 flex items-center justify-center mb-3 shadow-lg">
+                        <span class="font-serif italic text-xl text-goldLight tracking-wider">
+                            Е <span class="text-sm not-italic text-gold">&amp;</span> С
+                        </span>
+                    </div>
+                    <p class="font-serif italic text-xl sm:text-2xl text-goldLight">
+                        С любовью, Елизавета и Сергей • 26.02.2027
+                    </p>
+                </div>
+
+                <div class="pointer-events-none select-none ornament-3d-shadow">
+                    <svg viewBox="0 0 800 140" class="w-full h-auto">
+                        <defs>
+                            <linearGradient id="baroqueGoldFooterBot" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#E7C87D"/>
+                                <stop offset="50%" stop-color="#FFF2CE"/>
+                                <stop offset="100%" stop-color="#E7C87D"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M 24 18 C 34 45, 22 75, 42 98 C 62 120, 105 112, 145 122 C 115 130, 68 134, 34 114 C 14 100, 12 58, 24 18 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
+                        <path d="M 145 122 C 215 116, 285 128, 355 122 C 375 114, 388 102, 400 96 C 412 102, 425 114, 445 122 C 515 128, 585 116, 655 122 C 600 132, 510 134, 442 128 C 425 126, 412 134, 400 136 C 388 134, 375 126, 358 128 C 290 134, 200 132, 145 122 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
+                        <path d="M 776 18 C 766 45, 778 75, 758 98 C 738 120, 695 112, 655 122 C 685 130, 732 134, 766 114 C 786 100, 788 58, 776 18 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
+                    </svg>
                 </div>
             </div>
         </section>
 
     </main>
-
-    <!-- СЛАЙД 6: ФИНАЛЬНЫЙ ФУТЕР (БОРДОВЫЙ С ФРАГМЕНТАМИ СТАРИННОЙ 3D-РАМКИ) -->
-    <footer class="slide-burgundy-ornate w-full py-12 sm:py-16 px-6 text-center flex flex-col justify-between items-center">
-        <!-- Верхний объёмный золотой вензель -->
-        <div class="w-full max-w-md mx-auto mb-8 pointer-events-none select-none ornament-3d-shadow">
-            <svg viewBox="0 0 420 75" class="w-56 sm:w-72 mx-auto h-auto">
-                <defs>
-                    <linearGradient id="baroqueGoldFooterTop" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#FFF5D6"/>
-                        <stop offset="40%" stop-color="#E3C176"/>
-                        <stop offset="100%" stop-color="#8A6421"/>
-                    </linearGradient>
-                </defs>
-                <path d="M 210 10 C 218 22, 232 24, 245 18 C 258 12, 272 22, 285 26 C 305 32, 328 20, 345 28 C 332 38, 312 36, 298 44 C 282 52, 265 42, 248 46 C 234 50, 222 60, 210 66 C 198 60, 186 50, 172 46 C 155 42, 138 52, 122 44 C 108 36, 88 38, 75 28 C 92 20, 115 32, 135 26 C 148 22, 162 12, 175 18 C 188 24, 202 22, 210 10 Z" fill="url(#baroqueGoldFooterTop)" stroke="#FFF6DC" stroke-width="0.8"/>
-            </svg>
-        </div>
-
-        <div class="max-w-xl mx-auto flex flex-col items-center my-4">
-            <div class="w-16 h-16 rounded-full border border-gold/75 bg-burgundyDeep/70 flex items-center justify-center mb-4 shadow-lg">
-                <span class="font-serif italic text-2xl text-goldLight tracking-wider">
-                    Е <span class="text-base not-italic text-gold">&amp;</span> С
-                </span>
-            </div>
-            <p class="font-serif italic text-xl sm:text-2xl text-goldLight mb-1">
-                С любовью, Елизавета и Сергей • 26.02.2027
-            </p>
-        </div>
-
-        <!-- Нижний объёмный фрагмент старинной рамки -->
-        <div class="w-full max-w-4xl mx-auto mt-8 pointer-events-none select-none ornament-3d-shadow">
-            <svg viewBox="0 0 800 140" class="w-full h-auto">
-                <defs>
-                    <linearGradient id="baroqueGoldFooterBot" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#E7C87D"/>
-                        <stop offset="50%" stop-color="#FFF2CE"/>
-                        <stop offset="100%" stop-color="#E7C87D"/>
-                    </linearGradient>
-                </defs>
-                <path d="M 24 18 C 34 45, 22 75, 42 98 C 62 120, 105 112, 145 122 C 115 130, 68 134, 34 114 C 14 100, 12 58, 24 18 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
-                <path d="M 145 122 C 215 116, 285 128, 355 122 C 375 114, 388 102, 400 96 C 412 102, 425 114, 445 122 C 515 128, 585 116, 655 122 C 600 132, 510 134, 442 128 C 425 126, 412 134, 400 136 C 388 134, 375 126, 358 128 C 290 134, 200 132, 145 122 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
-                <path d="M 776 18 C 766 45, 778 75, 758 98 C 738 120, 695 112, 655 122 C 685 130, 732 134, 766 114 C 786 100, 788 58, 776 18 Z" fill="url(#baroqueGoldFooterBot)" stroke="#FFF5D6" stroke-width="0.9"/>
-            </svg>
-        </div>
-    </footer>
 
     <script>
         (function initWeddingInvitation() {
